@@ -1,0 +1,69 @@
+version: "3.0"
+services:
+  db:
+    image: postgres:12
+    ports:
+      - "5432:5432"
+    volumes:
+      - "./docker/db/pgdata:/var/lib/postgresql/data"
+    environment:
+      POSTGRES_PASSWORD: "postgres"
+      POSTGRES_DB: "theeye"
+
+  localstack-s3:
+    image: localstack/localstack:0.11.4
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3
+      - DEFAULT_REGION=us-east-1
+
+  redis:
+    image: redis:5.0
+    ports:
+      - "6379:6379"
+
+  the-eye:
+    build: .
+    restart: on-failure
+    volumes:
+      - ".:/usr/src/app"
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      ENV: "development"
+      DATABASE_URL: "postgres://postgres:postgres@db:5432/theeye"
+      AWS_S3_ENDPOINT_URL: "http://localstack-s3:4566/"
+      REDIS_HOST: "redis"
+    depends_on:
+      - db
+      - localstack-s3
+      - redis
+    links:
+      - db:db
+      - localstack-s3:localstack-s3
+      - redis:redis
+
+  the-eye-celery-worker:
+    build: .
+    restart: on-failure
+    volumes:
+      - ".:/usr/src/app"
+    env_file:
+      - .env
+    environment:
+      ENV: "development"
+      DATABASE_URL: "postgres://postgres:postgres@db:5432/theeye"
+      AWS_S3_ENDPOINT_URL: "http://localstack-s3:4566/"
+      REDIS_HOST: "redis"
+    command: "celery development"
+    depends_on:
+      - db
+      - localstack-s3
+      - redis
+    links:
+      - db:db
+      - localstack-s3:localstack-s3
+      - redis:redis
