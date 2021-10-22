@@ -43,7 +43,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = ENVIRONMENT == "development" or os.environ.get("DEBUG", False)
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "localhost",
+]
 
 
 # Application definition
@@ -55,9 +57,16 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sites",
     # Rest Framework
     "rest_framework",
     "rest_framework.authtoken",
+    # Rest Auth
+    "rest_auth",
+    "rest_auth.registration",
+    # Allauth
+    "allauth",
+    "allauth.account",
     # CORS
     "corsheaders",
     # Apps
@@ -137,6 +146,10 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Authentication
 AUTH_USER_MODEL = "accounts.User"
+AUTHENTICATION_BACKENDS = (
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+)
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
