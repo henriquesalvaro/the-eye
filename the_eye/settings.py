@@ -17,6 +17,9 @@ import botocore
 import dj_database_url
 import dotenv
 from s3_environ import S3Environ
+import sentry_sdk
+from sentry_sdk.integrations.celery import CeleryIntegration
+from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -207,3 +210,75 @@ CELERY_TIMEZONE = "America/New_York"
 
 if ENVIRONMENT == "test":
     CELERY_TASK_ALWAYS_EAGER = True
+
+# Sentry & Logging
+if not DEBUG and ENVIRONMENT != "test":
+
+    def before_send(event, hint):
+        # Ignore disallowed hosts
+        if event.get("logger") == "django.security.DisallowedHost":
+            return None
+        return event
+
+    integrations = [DjangoIntegration(), CeleryIntegration()]
+    sentry_sdk.init(
+        dsn=os.environ.get("SENTRY_DSN"),
+        environment=ENVIRONMENT,
+        integrations=integrations,
+        before_send=before_send,
+    )
+
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "root": {
+        "level": "WARNING",
+        "handlers": ["sentry"],
+    },
+    "formatters": {
+        "verbose": {
+            "format": "%(levelname)s %(asctime)s %(module)s "
+            "%(process)d %(thread)d %(message)s"
+        },
+    },
+    "handlers": {
+        "sentry": {
+            "level": "ERROR",
+            "class": "sentry_sdk.integrations.logging.EventHandler",
+        },
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+            "formatter": "verbose",
+        },
+    },
+    "loggers": {
+        "django.db.backends": {
+            "level": "DEBUG" if DEBUG else "ERROR",
+            "handlers": ["console"],
+            "propagate": False,
+        },
+        "sentry.errors": {
+            "level": "DEBUG",
+            "handlers": ["console"],
+            "propagate": False,
+        },
+        "sentry": {
+            "level": "ERROR",
+            "handlers": ["sentry"],
+            "propagate": False,
+        },
+        "django.security.DisallowedHost": {
+            "level": "ERROR",
+            "handlers": [
+                "console",
+            ],
+            "propagate": False,
+        },
+        "amazon-logs": {
+            "level": "INFO",
+            "handlers": ["console"],
+        },
+    },
+}
