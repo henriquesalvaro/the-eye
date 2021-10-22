@@ -60,6 +60,8 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     # CORS
     "corsheaders",
+    # Apps
+    "accounts",
 ]
 
 MIDDLEWARE = [
