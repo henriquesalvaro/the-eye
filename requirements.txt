@@ -27,3 +27,7 @@ django-cors-headers==3.10.0
 
 # Storage
 django-storages==1.12.2
+
+# Celery
+celery==5.1.2
+redis==3.5.3

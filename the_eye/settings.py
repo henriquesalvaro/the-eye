@@ -191,3 +191,19 @@ if DEBUG or ENVIRONMENT == "test":
             if error_code == "404":
                 bucket = s3.Bucket(AWS_STORAGE_BUCKET_NAME)
                 bucket.create(ACL="public-read")
+
+# Redis
+REDIS_HOST = os.environ.get("REDIS_HOST", "localhost")
+REDIS_PORT = os.environ.get("REDIS_PORT", "6379")
+REDIS_URL = f"redis://{REDIS_HOST}:{REDIS_PORT}"
+
+# Celery
+CELERY_BROKER_URL = f"{REDIS_URL}/2"
+CELERY_TASK_DEFAULT_QUEUE = os.environ.get("CELERY_DEFAULT_QUEUE", ENVIRONMENT)
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+CELERY_RESULT_SERIALIZER = "json"
+CELERY_TIMEZONE = "America/New_York"
+
+if ENVIRONMENT == "test":
+    CELERY_TASK_ALWAYS_EAGER = True
