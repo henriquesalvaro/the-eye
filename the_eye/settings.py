@@ -9,21 +9,37 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import os
 from pathlib import Path
+
+import dj_database_url
+import dotenv
+from s3_environ import S3Environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Read .env if present
+dotenv.read_dotenv(os.path.join(BASE_DIR, ".env"))
+ENVIRONMENT = os.environ.get("ENVIRONMENT")
+LOAD_ENVS_FROM_FILE = (
+    True if os.environ.get("LOAD_ENVS_FROM_FILE", False) == "True" else False
+)
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
+# If no .env / LOAD_ENVS_FROM_FILE is present,
+# look for a `envs-<environment_name>.json` on a specific S3 Bucket
+env_file = f"envs-{ENVIRONMENT}.json"
+if not LOAD_ENVS_FROM_FILE:
+    S3Environ(bucket="bucket-env", key=env_file)
+    print("Loading envs from S3: {0}".format(env_file))
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-v8kmasulobc@04x^s@2@_+6&h8$a08k081sc3h91ux)re#ghq9'
+# Security
+SECRET_KEY = os.environ.get("SECRET_KEY")
+DEBUG = (
+    ENVIRONMENT == "development"
+    or os.environ.get("DEBUG", False)
+)
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -73,12 +89,9 @@ WSGI_APPLICATION = 'the_eye.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DATABASE_URL = os.environ.get("DATABASE_URL")
+DATABASES = {"default": dj_database_url.parse(DATABASE_URL)}
+DATABASES["default"]["ATOMIC_REQUESTS"] = True
 
 
 # Password validation
