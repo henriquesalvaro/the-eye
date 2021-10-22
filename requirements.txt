@@ -10,7 +10,7 @@ s3-environ==0.0.5
 
 # Rest Framework
 djangorestframework==3.12.2
-django-filter==2.4.0
+django-filter==21.1
 
 # Routers
 drf-nested-routers==0.92.5
