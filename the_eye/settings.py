@@ -249,7 +249,7 @@ LOGGING = {
         },
         "console": {
             "level": "DEBUG",
-            "class": "logging.StreamHandler",
+            "class": "helpers.logging_handler.CustomStreamHandler",
             "formatter": "verbose",
         },
     },
