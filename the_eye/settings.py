@@ -151,6 +151,22 @@ AUTHENTICATION_BACKENDS = (
     "allauth.account.auth_backends.AuthenticationBackend",
 )
 
+REST_AUTH_SERIALIZERS = {
+    "LOGIN_SERIALIZER": "accounts.api.v1.serializers.LoginSerializer",
+    "TOKEN_SERIALIZER": "accounts.api.v1.serializers.UserTokenSerializer",
+    "USER_DETAILS_SERIALIZER": "accounts.api.v1.serializers.UserDetailsSerializer",
+}
+
+REST_AUTH_REGISTER_SERIALIZERS = {
+    "REGISTER_SERIALIZER": "accounts.api.v1.serializers.RegisterSerializer",
+}
+
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_VERIFICATION = "none"
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
