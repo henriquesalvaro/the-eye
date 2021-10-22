@@ -12,6 +12,9 @@ s3-environ==0.0.5
 djangorestframework==3.12.2
 django-filter==2.4.0
 
+# Routers
+drf-nested-routers==0.92.5
+
 # Run Server
 gunicorn==20.1.0
 whitenoise==5.3.0
