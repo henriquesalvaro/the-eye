@@ -3,7 +3,6 @@ Events - EventPayload tests
 """
 from django.test import TestCase
 
-from applications.models import Application
 from events.models import EventCategory, EventName, EventPayload
 
 
