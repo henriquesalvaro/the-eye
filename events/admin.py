@@ -40,8 +40,9 @@ class EventNameAdmin(admin.ModelAdmin):
 @admin.register(EventPayload)
 class EventPayloadAdmin(JSONWidgetModelAdmin):
     model = EventPayload
-    list_display = ("id", "application", "category", "name")
-    list_select_related = ["application", "category", "name"]
+    list_display = ("id", "category", "name")
+    list_select_related = ["category", "name"]
+    filter_horizontal = ["applications"]
 
 
 @admin.register(Session)

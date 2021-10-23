@@ -8,9 +8,8 @@ from helpers.models import UUIDPrimaryKeyModel
 
 
 class EventPayload(UUIDPrimaryKeyModel):
-    application = models.ForeignKey(
+    applications = models.ManyToManyField(
         "applications.Application",
-        on_delete=models.CASCADE,
         related_name="event_payloads",
     )
     category = models.ForeignKey(
