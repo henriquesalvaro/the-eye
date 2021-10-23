@@ -72,6 +72,8 @@ INSTALLED_APPS = [
     "storages",
     # CORS
     "corsheaders",
+    # Django JSON Widget
+    "django_json_widget",
     # Apps
     "accounts",
     "applications",
