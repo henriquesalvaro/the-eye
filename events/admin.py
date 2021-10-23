@@ -4,7 +4,14 @@ Events admin
 from django.contrib import admin
 from django.db.models import Prefetch
 
-from events.models import Event, EventCategory, EventName, EventPayload, Session
+from events.models import (
+    Event,
+    EventCategory,
+    EventName,
+    EventPayload,
+    Session,
+    ApplicationEventPayload,
+)
 from helpers.admin import JSONWidgetModelAdmin
 
 
@@ -25,6 +32,12 @@ class EventInline(admin.TabularInline):
         return formset
 
 
+class ApplicationEventPayloadInline(admin.TabularInline):
+    model = ApplicationEventPayload
+    fields = ("application",)
+    extra = 0
+
+
 @admin.register(EventCategory)
 class EventCategoryAdmin(admin.ModelAdmin):
     model = EventCategory
@@ -42,7 +55,7 @@ class EventPayloadAdmin(JSONWidgetModelAdmin):
     model = EventPayload
     list_display = ("id", "category", "name")
     list_select_related = ["category", "name"]
-    filter_horizontal = ["applications"]
+    inlines = [ApplicationEventPayloadInline]
 
 
 @admin.register(Session)
