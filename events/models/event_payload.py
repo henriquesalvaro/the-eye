@@ -20,6 +20,9 @@ class EventPayload(UUIDPrimaryKeyModel):
     )
     schema = models.JSONField(default=dict)
 
+    class InvalidSchema(BaseException):
+        pass
+
     def save(
         self, force_insert=False, force_update=False, using=None, update_fields=None
     ):
@@ -30,7 +33,7 @@ class EventPayload(UUIDPrimaryKeyModel):
         try:
             Draft202012Validator.check_schema(self.schema)
         except SchemaError as exc:
-            raise ValueError(
+            raise EventPayload.InvalidSchema(
                 f"An EventPayload schema must be a valid JSON Schema. Error: {exc}"
             )
 
