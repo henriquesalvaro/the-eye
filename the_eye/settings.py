@@ -68,6 +68,8 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
+    # Storage
+    "storages",
     # CORS
     "corsheaders",
     # Apps
