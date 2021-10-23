@@ -37,3 +37,6 @@ redis==3.5.3
 
 # Sentry
 sentry-sdk==1.4.3
+
+# JSONSchema
+jsonschema==4.1.2
