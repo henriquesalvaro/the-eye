@@ -25,4 +25,5 @@ urlpatterns = [
     re_path(r"health-check/$", health_check, name="health_check"),
     # Apps
     re_path(r"^", include("accounts.urls")),
+    re_path(r"^", include("applications.urls")),
 ]

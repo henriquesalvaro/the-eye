@@ -1,0 +1,6 @@
+"""
+Applications - URL Configuration
+"""
+
+
+urlpatterns = []
