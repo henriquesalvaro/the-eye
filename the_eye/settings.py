@@ -67,11 +67,14 @@ INSTALLED_APPS = [
     # Allauth
     "allauth",
     "allauth.account",
+    "allauth.socialaccount",
     # CORS
     "corsheaders",
     # Apps
     "accounts",
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
