@@ -3,13 +3,13 @@ Applications - Application Key model
 """
 import binascii
 import os
-import uuid
 
 from django.db import models
 
+from helpers.models import UUIDPrimaryKeyModel
 
-class ApplicationKey(models.Model):
-    id = models.UUIDField(default=uuid.uuid4, primary_key=True, editable=False)
+
+class ApplicationKey(UUIDPrimaryKeyModel):
     application = models.ForeignKey(
         "applications.Application", on_delete=models.CASCADE, related_name="keys"
     )
