@@ -75,6 +75,7 @@ INSTALLED_APPS = [
     # Apps
     "accounts",
     "applications",
+    "events",
 ]
 
 SITE_ID = 1
