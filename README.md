@@ -25,6 +25,7 @@
 - Create a proper `.env` file
 - Run the migrations with `python manage.py migrate`
 - Run the server with `python manage.py runserver 8000`
+- Run the celery worker with `celery -A the_eye worker -L DEBUG -Q development`
 - Server can be accessed through `http://localhost:8000`
 - Create base models with `python manage.py loaddata fixtures/base.json`
 - Run tests with `ENVIRONMENT=test python manage.py test`
