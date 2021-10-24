@@ -1,0 +1,755 @@
+{
+	"info": {
+		"_postman_id": "e8796452-d0cf-40c5-ba55-833546b12d8d",
+		"name": "The Eye",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Accounts",
+			"item": [
+				{
+					"name": "Register",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": [
+						{
+							"name": "Register - Successful request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"henriquesalvaro@gmail.com\",\n    \"password1\": \"macarena94\",\n    \"password2\": \"macarena94\",\n    \"first_name\": \"Henrique\",\n    \"last_name\": \"Salvaro\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/register/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"register",
+										""
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 22 Oct 2021 19:43:47 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "269"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "messages=W1siX19qc29uX21lc3NhZ2UiLDAsMjUsIlN1Y2Nlc3NmdWxseSBzaWduZWQgaW4gYXMgaGVucmlxdWVzYWx2YXJvLiJdXQ:1me0SB:vlNZYTjrm5Rqb923WcqhXFojyFgb0xHINT1IQW3SLj8; HttpOnly; Path=/; SameSite=Lax"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "csrftoken=iimcNTan9eDNIn39yH6GxW8fyZesYGiiih43MTVfRrCnBBd0pYefHDO36eZVnG9G; expires=Fri, 21 Oct 2022 19:43:47 GMT; Max-Age=31449600; Path=/; SameSite=Lax"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "sessionid=z2oh8wn1u7qgld6ynyb43jolu9yfgwce; expires=Fri, 05 Nov 2021 19:43:47 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"key\": \"899f45cf78ec3c8df85fead2aad578c7d4253a23\",\n    \"user\": {\n        \"id\": \"2748cc25-2964-4e89-ad15-d0f9b4cf86f6\",\n        \"username\": \"henriquesalvaro\",\n        \"email\": \"henriquesalvaro@gmail.com\",\n        \"first_name\": \"Henrique\",\n        \"last_name\": \"Salvaro\",\n        \"is_active\": true,\n        \"is_staff\": false,\n        \"is_superuser\": false\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "User Details",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{USER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/user/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "User Details - Successful request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{USER_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/user/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 22 Oct 2021 19:44:33 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "211"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"2748cc25-2964-4e89-ad15-d0f9b4cf86f6\",\n    \"username\": \"henriquesalvaro\",\n    \"email\": \"henriquesalvaro@gmail.com\",\n    \"first_name\": \"Henrique\",\n    \"last_name\": \"Salvaro\",\n    \"is_active\": true,\n    \"is_staff\": false,\n    \"is_superuser\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"henriquesalvaro@gmail.com\",\n    \"password\": \"macarena94\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/login/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"login",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Login - Successful request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"henriquesalvaro@gmail.com\",\n    \"password\": \"macarena94\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/login/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"login",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 22 Oct 2021 19:45:21 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Cookie, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "269"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "csrftoken=KDWVto8nkI6BbKzxE7EXLtGTXBxrQcahqgM7kqrEtuEvzu9pE7CLRuiezULr3J2D; expires=Fri, 21 Oct 2022 19:45:21 GMT; Max-Age=31449600; Path=/; SameSite=Lax"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "sessionid=z2oh8wn1u7qgld6ynyb43jolu9yfgwce; expires=Fri, 05 Nov 2021 19:45:21 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"key\": \"899f45cf78ec3c8df85fead2aad578c7d4253a23\",\n    \"user\": {\n        \"id\": \"2748cc25-2964-4e89-ad15-d0f9b4cf86f6\",\n        \"username\": \"henriquesalvaro\",\n        \"email\": \"henriquesalvaro@gmail.com\",\n        \"first_name\": \"Henrique\",\n        \"last_name\": \"Salvaro\",\n        \"is_active\": true,\n        \"is_staff\": false,\n        \"is_superuser\": false\n    }\n}"
+						}
+					]
+				},
+				{
+					"name": "Edit User Details",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{USER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Henriqu1\",\n    \"last_name\": \"Salvar1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/user/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"user",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Edit User Details - Successful request",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{USER_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"first_name\": \"Henriqu1\",\n    \"last_name\": \"Salvar1\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/user/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"user",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Fri, 22 Oct 2021 19:46:04 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, PUT, PATCH, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "211"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"2748cc25-2964-4e89-ad15-d0f9b4cf86f6\",\n    \"username\": \"henriquesalvaro\",\n    \"email\": \"henriquesalvaro@gmail.com\",\n    \"first_name\": \"Henriqu1\",\n    \"last_name\": \"Salvar1\",\n    \"is_active\": true,\n    \"is_staff\": false,\n    \"is_superuser\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Change Password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{USER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"old_password\": \"macarena94\",\n    \"new_password1\": \"macarena93\",\n    \"new_password2\": \"macarena93\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/change-password/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"change-password",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Change Password - Successful request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{USER_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"old_password\": \"macarena94\",\n    \"new_password1\": \"macarena93\",\n    \"new_password2\": \"macarena93\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/change-password/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"change-password",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 13:04:21 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin, Cookie"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "41"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								},
+								{
+									"key": "Set-Cookie",
+									"value": "sessionid=sdxeyjmifko5zuts5oxougprmcnw4pla; expires=Sat, 06 Nov 2021 13:04:21 GMT; HttpOnly; Max-Age=1209600; Path=/; SameSite=Lax"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"detail\": \"New password has been saved.\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Applications",
+			"item": [
+				{
+					"name": "Current Application",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": null
+					},
+					"response": [
+						{
+							"name": "Current Application - Successful request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Application-Key",
+										"value": "4bc46b5c60ca4c61833189464d404e0160d81c08",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/application/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"application",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sat, 23 Oct 2021 13:53:25 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "62"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"ad2a4a44-6376-4ada-a3d9-621992c80f9b\",\n    \"name\": \"The Eye\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Create Event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Application-Key",
+								"value": "{{APPLICATION_KEY}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"category\": \"form interaction\",\n    \"name\": \"submit\",\n    \"session_id\": \"b58d947c-9ff0-4cf4-8dd3-d56bba8ecfaf\",\n    \"data\": {\n        \"host\": \"www.google.com\",\n        \"path\": \"/images/search/\",\n        \"form\": {\n            \"first_name\": \"Henry\"\n        }\n    },\n    \"timestamp\": \"2021-10-24T00:10:00-0300\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/events/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"events",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Create Event - Successful request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Application-Key",
+										"value": "{{APPLICATION_KEY}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"category\": \"form interaction\",\n    \"name\": \"submit\",\n    \"session_id\": \"b58d947c-9ff0-4cf4-8dd3-d56bba8ecfaf\",\n    \"data\": {\n        \"host\": \"www.google.com\",\n        \"path\": \"/images/search/\",\n        \"form\": {\n            \"first_name\": \"Henry\"\n        }\n    },\n    \"timestamp\": \"2021-10-24T00:10:00-0300\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/events/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"events",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Oct 2021 03:10:59 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "POST, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"protocol\": \"a06b80f9-a7dc-4334-bcc6-2b8ccdb009e8\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Data Analytics",
+			"item": []
+		}
+	]
+}
