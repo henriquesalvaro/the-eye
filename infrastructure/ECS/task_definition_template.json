@@ -1,0 +1,27 @@
+[
+  {
+    "name": "${name}",
+    "image": "${image}",
+    "memoryReservation": 400,
+    "essential": true,
+    "portMappings": [
+      {
+        "containerPort": 8000,
+        "hostPort": 0
+      }
+    ],
+    "environment": [
+      {
+          "name": "ENVIRONMENT",
+          "value": "${env}"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+          "awslogs-group": "${log_group}",
+          "awslogs-region": "${region}"
+      }
+    }
+  }
+]

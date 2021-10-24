@@ -2,7 +2,7 @@
 Django==3.2.8
 
 # Database
-psycopg2===2.9.1
+psycopg2==2.9.1
 
 # Envs
 django-dotenv==1.4.2
@@ -11,6 +11,9 @@ s3-environ==0.0.5
 # Rest Framework
 djangorestframework==3.12.2
 django-filter==21.1
+
+# Auth
+django-rest-auth[with_social]==0.9.5
 
 # Routers
 drf-nested-routers==0.92.5
@@ -34,3 +37,9 @@ redis==3.5.3
 
 # Sentry
 sentry-sdk==1.4.3
+
+# JSONSchema
+jsonschema==4.1.2
+
+# Django JSON Widget
+django-json-widget==1.1.1

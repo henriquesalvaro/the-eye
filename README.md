@@ -25,6 +25,7 @@
 - Create a proper `.env` file
 - Run the server with `python manage.py runserver 8000`
 - Server can be accessed through `http://localhost:8000`
+- Create base models with `python manage.py loaddata fixtures/base.json`
 - Run tests with `ENVIRONMENT=test python manage.py test`
 
 # Run containerized application locally
@@ -33,6 +34,12 @@
 - Start the containers `docker-compose -f docker-compose-full.yml up`
 - Run the migrations `docker-compose -f docker-compose-full.yml exec the-eye python manage.py migrate`
 - Server can be accessed through `http://localhost:8000`
+
+# Postman collection
+- An overview of the available endpoints can be found on the Postman collection `docs/The Eye.postman_collection.json`;
+- With the base models, you can login with email `henriquesalvaro@gmail.com` and password `macarena94`;
+- You can become Application `The Eye` with application key `4bc46b5c60ca4c61833189464d404e0160d81c08`;
+- To authenticate as an Application, you can add header `Application-Key: <application key>`.
 
 # .env file
 You need a `.env`file with your environment variables, here's an example file:
