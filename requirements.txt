@@ -12,6 +12,9 @@ s3-environ==0.0.5
 djangorestframework==3.12.2
 django-filter==21.1
 
+# Auth
+django-rest-auth[with_social]==0.9.5
+
 # Routers
 drf-nested-routers==0.92.5
 
