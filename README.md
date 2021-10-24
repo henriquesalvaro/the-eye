@@ -23,6 +23,7 @@
 - Install the pre-commit hooks `pre-commit install`
 - Start the supporting containers `docker-compose up` with the database, localstack and redis
 - Create a proper `.env` file
+- Run the migrations with `python manage.py migrate`
 - Run the server with `python manage.py runserver 8000`
 - Server can be accessed through `http://localhost:8000`
 - Create base models with `python manage.py loaddata fixtures/base.json`
