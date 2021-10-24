@@ -36,7 +36,7 @@
 - Server can be accessed through `http://localhost:8000`
 
 # Postman collection
-- An overview of the available endpoints can be found on the Postman collection ``;
+- An overview of the available endpoints can be found on the Postman collection `docs/The Eye.postman_collection.json`;
 - With the base models, you can login with email `henriquesalvaro@gmail.com` and password `macarena94`;
 - You can become Application `The Eye` with application key `4bc46b5c60ca4c61833189464d404e0160d81c08`;
 - To authenticate as an Application, you can add header `Application-Key: <application key>`.
