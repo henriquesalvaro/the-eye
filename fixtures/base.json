@@ -1,0 +1,249 @@
+[
+  {
+    "model": "accounts.user",
+    "pk": "eef6a97f-89ae-46b4-a43f-695e7c57c3b9",
+    "fields": {
+      "password": "pbkdf2_sha256$260000$LDfiykZ0zMFqNuLRTzOB08$vwtvUB/sIi1U7D8qGEYiQU0qINjb9lC3xqiN+MVkvl0=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "henrique",
+      "first_name": "",
+      "last_name": "",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2021-10-24T03:48:25.327Z",
+      "email": "henriquesalvaro@gmail.com",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "applications.application",
+    "pk": "ad2a4a44-6376-4ada-a3d9-621992c80f9b",
+    "fields": {
+      "name": "The Eye"
+    }
+  },
+  {
+    "model": "applications.applicationkey",
+    "pk": "2022eeff-4e72-4868-9269-cdfc14b91ab1",
+    "fields": {
+      "application": "ad2a4a44-6376-4ada-a3d9-621992c80f9b",
+      "key": "4bc46b5c60ca4c61833189464d404e0160d81c08",
+      "revoked": false
+    }
+  },
+  {
+    "model": "applications.applicationkey",
+    "pk": "219dedf7-1518-44e0-ab75-5ac9c97fabfe",
+    "fields": {
+      "application": "ad2a4a44-6376-4ada-a3d9-621992c80f9b",
+      "key": "dad80cf3057d8a58eae02ff9b0e960cbb17263f6",
+      "revoked": true
+    }
+  },
+  {
+    "model": "events.eventpayload",
+    "pk": "233fc9d1-3a58-4b6e-b4b9-afe28ed29040",
+    "fields": {
+      "category": "b279d052-3257-4a5b-89da-9068f80cc376",
+      "name": "ca5f9567-57c0-45e4-ad6d-fe6304cce651",
+      "schema": {
+        "type": "object",
+        "required": [
+          "host",
+          "path",
+          "element"
+        ],
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          },
+          "element": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "model": "events.eventpayload",
+    "pk": "9a9cb414-188f-4a2a-9d52-65f70617d894",
+    "fields": {
+      "category": "b279d052-3257-4a5b-89da-9068f80cc376",
+      "name": "ffc8663c-0436-4d8a-a51a-4c10d2820f59",
+      "schema": {
+        "type": "object",
+        "required": [
+          "host",
+          "path"
+        ],
+        "properties": {
+          "host": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "model": "events.eventpayload",
+    "pk": "a53919c0-d1fa-48c0-b3c8-dd1493119fa2",
+    "fields": {
+      "category": "5a12726b-625a-4b1e-82fd-8acecf89fa2d",
+      "name": "5c23b1e8-457c-415a-9b11-c459059e7117",
+      "schema": {
+        "type": "object",
+        "required": [
+          "host",
+          "path",
+          "form"
+        ],
+        "properties": {
+          "form": {
+            "type": "object"
+          },
+          "host": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  {
+    "model": "events.applicationeventpayload",
+    "pk": "57ed5c15-cccb-4014-9370-eb647c33c7c0",
+    "fields": {
+      "application": "ad2a4a44-6376-4ada-a3d9-621992c80f9b",
+      "event_payload": "a53919c0-d1fa-48c0-b3c8-dd1493119fa2"
+    }
+  },
+  {
+    "model": "events.applicationeventpayload",
+    "pk": "65e29efa-e092-4dfa-a791-79e93f46df9f",
+    "fields": {
+      "application": "ad2a4a44-6376-4ada-a3d9-621992c80f9b",
+      "event_payload": "233fc9d1-3a58-4b6e-b4b9-afe28ed29040"
+    }
+  },
+  {
+    "model": "events.applicationeventpayload",
+    "pk": "69045a3a-5b8d-4988-8e3f-ca3b6161ca72",
+    "fields": {
+      "application": "ad2a4a44-6376-4ada-a3d9-621992c80f9b",
+      "event_payload": "9a9cb414-188f-4a2a-9d52-65f70617d894"
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": "402fde22-821c-45db-aaaa-8ca1e87265ec",
+    "fields": {
+      "session": "3d60ba33-833e-4872-8b16-25f58c7dd9da",
+      "application": "ad2a4a44-6376-4ada-a3d9-621992c80f9b",
+      "category": "5a12726b-625a-4b1e-82fd-8acecf89fa2d",
+      "name": "5c23b1e8-457c-415a-9b11-c459059e7117",
+      "data": {
+        "form": {
+          "last_name": "Doe",
+          "first_name": "John"
+        },
+        "host": "www.consumeraffairs.com",
+        "path": "/"
+      },
+      "timestamp": "2021-10-23T15:50:53Z",
+      "received": "2021-10-23T15:50:55Z",
+      "processed": "2021-10-23T15:50:56Z"
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": "49380a93-567b-47dd-a499-44d0147c48ad",
+    "fields": {
+      "session": "3d60ba33-833e-4872-8b16-25f58c7dd9da",
+      "application": "ad2a4a44-6376-4ada-a3d9-621992c80f9b",
+      "category": "b279d052-3257-4a5b-89da-9068f80cc376",
+      "name": "ffc8663c-0436-4d8a-a51a-4c10d2820f59",
+      "data": {
+        "host": "www.consumeraffairs.com",
+        "path": "/"
+      },
+      "timestamp": "2021-10-23T15:48:57Z",
+      "received": "2021-10-23T15:48:58Z",
+      "processed": "2021-10-23T15:49:00Z"
+    }
+  },
+  {
+    "model": "events.event",
+    "pk": "73d68658-bea1-4277-b53c-9c40cc7d3c32",
+    "fields": {
+      "session": "3d60ba33-833e-4872-8b16-25f58c7dd9da",
+      "application": "ad2a4a44-6376-4ada-a3d9-621992c80f9b",
+      "category": "b279d052-3257-4a5b-89da-9068f80cc376",
+      "name": "ca5f9567-57c0-45e4-ad6d-fe6304cce651",
+      "data": {
+        "host": "www.consumeraffairs.com",
+        "path": "/",
+        "element": "chat bubble"
+      },
+      "timestamp": "2021-10-23T15:51:18Z",
+      "received": "2021-10-23T15:51:19Z",
+      "processed": "2021-10-23T15:51:22Z"
+    }
+  },
+  {
+    "model": "events.eventcategory",
+    "pk": "5a12726b-625a-4b1e-82fd-8acecf89fa2d",
+    "fields": {
+      "name": "form interaction"
+    }
+  },
+  {
+    "model": "events.eventcategory",
+    "pk": "b279d052-3257-4a5b-89da-9068f80cc376",
+    "fields": {
+      "name": "page interaction"
+    }
+  },
+  {
+    "model": "events.eventname",
+    "pk": "5c23b1e8-457c-415a-9b11-c459059e7117",
+    "fields": {
+      "name": "submit"
+    }
+  },
+  {
+    "model": "events.eventname",
+    "pk": "ca5f9567-57c0-45e4-ad6d-fe6304cce651",
+    "fields": {
+      "name": "cta click"
+    }
+  },
+  {
+    "model": "events.eventname",
+    "pk": "ffc8663c-0436-4d8a-a51a-4c10d2820f59",
+    "fields": {
+      "name": "pageview"
+    }
+  },
+  {
+    "model": "events.session",
+    "pk": "3d60ba33-833e-4872-8b16-25f58c7dd9da",
+    "fields": {
+      "application": "ad2a4a44-6376-4ada-a3d9-621992c80f9b",
+      "application_session_id": "91e0ca17-07ba-408a-a760-380e43934709",
+      "created": "2021-10-23T15:31:55Z"
+    }
+  }
+]
