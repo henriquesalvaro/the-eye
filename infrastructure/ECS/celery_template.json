@@ -1,0 +1,22 @@
+[
+  {
+    "name": "${name}",
+    "image": "${image}",
+    "memoryReservation": 128,
+    "essential": true,
+    "command": ${jsonencode(command)},
+    "environment": [
+      {
+          "name": "ENVIRONMENT",
+          "value": "${env}"
+      }
+    ],
+    "logConfiguration": {
+      "logDriver": "awslogs",
+      "options": {
+          "awslogs-group": "${log_group}",
+          "awslogs-region": "${region}"
+      }
+    }
+  }
+]
