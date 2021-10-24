@@ -37,3 +37,9 @@ redis==3.5.3
 
 # Sentry
 sentry-sdk==1.4.3
+
+# JSONSchema
+jsonschema==4.1.2
+
+# Django JSON Widget
+django-json-widget==1.1.1

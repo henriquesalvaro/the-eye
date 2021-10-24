@@ -26,4 +26,5 @@ urlpatterns = [
     # Apps
     re_path(r"^", include("accounts.urls")),
     re_path(r"^", include("applications.urls")),
+    re_path(r"^", include("events.urls")),
 ]
