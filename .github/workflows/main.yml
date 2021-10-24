@@ -5,7 +5,7 @@ on: pull_request
 jobs:
   test:
     runs-on: ubuntu-latest
-    container: python:3.9-slim
+    container: python:3.9
     services:
       db:
         image: postgres:12
@@ -21,7 +21,7 @@ jobs:
 
       - uses: actions/checkout@v2
 
-      - name: Istall requirements
+      - name: Install requirements
         run: pip install -r requirements.txt
 
       - name: Install test requirements
@@ -40,5 +40,5 @@ jobs:
           AWS_ACCESS_KEY_ID: "foo"
           AWS_SECRET_ACCESS_KEY: "bar"
           AWS_DEFAULT_REGION: "us-east-1"
-          DATABASE_URL: "postgres://postgres:theeye@localhost:5432/theeye"
+          DATABASE_URL: "postgres://postgres:theeye@db:5432/theeye"
           ENVIRONMENT: "test"
