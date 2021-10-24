@@ -198,6 +198,21 @@
 				},
 				{
 					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (responseBody) {",
+									"    var jsonData = JSON.parse(responseBody);",
+									"    pm.environment.set(\"USER_TOKEN\", jsonData.key);",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -749,7 +764,441 @@
 		},
 		{
 			"name": "Data Analytics",
-			"item": []
+			"item": [
+				{
+					"name": "List Events",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token {{USER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/v1/query-events/?start=2021-10-22T18:39:15Z&end=2021-10-23T18:39:15Z",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"query-events",
+								""
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "2021-10-22T18:39:15Z"
+								},
+								{
+									"key": "category",
+									"value": "page interaction",
+									"disabled": true
+								},
+								{
+									"key": "end",
+									"value": "2021-10-23T18:39:15Z"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "List Events - Successful request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{USER_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/query-events/",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"query-events",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Oct 2021 18:34:41 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "982"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 3,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": \"49380a93-567b-47dd-a499-44d0147c48ad\",\n            \"application\": \"ad2a4a44-6376-4ada-a3d9-621992c80f9b\",\n            \"session_id\": \"91e0ca17-07ba-408a-a760-380e43934709\",\n            \"category\": \"page interaction\",\n            \"name\": \"pageview\",\n            \"data\": {\n                \"host\": \"www.consumeraffairs.com\",\n                \"path\": \"/\"\n            },\n            \"timestamp\": \"2021-10-23T15:48:57Z\"\n        },\n        {\n            \"id\": \"402fde22-821c-45db-aaaa-8ca1e87265ec\",\n            \"application\": \"ad2a4a44-6376-4ada-a3d9-621992c80f9b\",\n            \"session_id\": \"91e0ca17-07ba-408a-a760-380e43934709\",\n            \"category\": \"form interaction\",\n            \"name\": \"submit\",\n            \"data\": {\n                \"form\": {\n                    \"last_name\": \"Doe\",\n                    \"first_name\": \"John\"\n                },\n                \"host\": \"www.consumeraffairs.com\",\n                \"path\": \"/\"\n            },\n            \"timestamp\": \"2021-10-23T15:50:53Z\"\n        },\n        {\n            \"id\": \"73d68658-bea1-4277-b53c-9c40cc7d3c32\",\n            \"application\": \"ad2a4a44-6376-4ada-a3d9-621992c80f9b\",\n            \"session_id\": \"91e0ca17-07ba-408a-a760-380e43934709\",\n            \"category\": \"page interaction\",\n            \"name\": \"cta click\",\n            \"data\": {\n                \"host\": \"www.consumeraffairs.com\",\n                \"path\": \"/\",\n                \"element\": \"chat bubble\"\n            },\n            \"timestamp\": \"2021-10-23T15:51:18Z\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "List Events - Filter by application and category",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{USER_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/query-events/?application=ad2a4a44-6376-4ada-a3d9-621992c80f9b&category=page interaction",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"query-events",
+										""
+									],
+									"query": [
+										{
+											"key": "application",
+											"value": "ad2a4a44-6376-4ada-a3d9-621992c80f9b"
+										},
+										{
+											"key": "category",
+											"value": "page interaction"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Oct 2021 18:35:48 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "650"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 2,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": \"49380a93-567b-47dd-a499-44d0147c48ad\",\n            \"application\": \"ad2a4a44-6376-4ada-a3d9-621992c80f9b\",\n            \"session_id\": \"91e0ca17-07ba-408a-a760-380e43934709\",\n            \"category\": \"page interaction\",\n            \"name\": \"pageview\",\n            \"data\": {\n                \"host\": \"www.consumeraffairs.com\",\n                \"path\": \"/\"\n            },\n            \"timestamp\": \"2021-10-23T15:48:57Z\"\n        },\n        {\n            \"id\": \"73d68658-bea1-4277-b53c-9c40cc7d3c32\",\n            \"application\": \"ad2a4a44-6376-4ada-a3d9-621992c80f9b\",\n            \"session_id\": \"91e0ca17-07ba-408a-a760-380e43934709\",\n            \"category\": \"page interaction\",\n            \"name\": \"cta click\",\n            \"data\": {\n                \"host\": \"www.consumeraffairs.com\",\n                \"path\": \"/\",\n                \"element\": \"chat bubble\"\n            },\n            \"timestamp\": \"2021-10-23T15:51:18Z\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "List Events - Filter by application and name",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{USER_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/query-events/?application=ad2a4a44-6376-4ada-a3d9-621992c80f9b&name=pageview",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"query-events",
+										""
+									],
+									"query": [
+										{
+											"key": "application",
+											"value": "ad2a4a44-6376-4ada-a3d9-621992c80f9b"
+										},
+										{
+											"key": "category",
+											"value": "page interaction",
+											"disabled": true
+										},
+										{
+											"key": "name",
+											"value": "pageview"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Oct 2021 18:36:15 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "338"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 1,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": \"49380a93-567b-47dd-a499-44d0147c48ad\",\n            \"application\": \"ad2a4a44-6376-4ada-a3d9-621992c80f9b\",\n            \"session_id\": \"91e0ca17-07ba-408a-a760-380e43934709\",\n            \"category\": \"page interaction\",\n            \"name\": \"pageview\",\n            \"data\": {\n                \"host\": \"www.consumeraffairs.com\",\n                \"path\": \"/\"\n            },\n            \"timestamp\": \"2021-10-23T15:48:57Z\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "List Events - Filter by session_id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{USER_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/query-events/?session_id=faf2da36-54a0-406d-9e35-0edce518e235",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"query-events",
+										""
+									],
+									"query": [
+										{
+											"key": "category",
+											"value": "page interaction",
+											"disabled": true
+										},
+										{
+											"key": "session_id",
+											"value": "faf2da36-54a0-406d-9e35-0edce518e235"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Oct 2021 18:40:03 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "347"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 1,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": \"9c32c0d4-c353-434c-9642-bdd58eb80333\",\n            \"application\": \"ad2a4a44-6376-4ada-a3d9-621992c80f9b\",\n            \"session_id\": \"faf2da36-54a0-406d-9e35-0edce518e235\",\n            \"category\": \"page interaction\",\n            \"name\": \"pageview\",\n            \"data\": {\n                \"host\": \"www.consumeraffairs.com\",\n                \"path\": \"/about-us/\"\n            },\n            \"timestamp\": \"2021-10-24T18:39:15Z\"\n        }\n    ]\n}"
+						},
+						{
+							"name": "List Events - Filter by start/end timestamps",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Token {{USER_TOKEN}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{BASE_URL}}/api/v1/query-events/?start=2021-10-22T18:39:15Z&end=2021-10-23T18:39:15Z",
+									"host": [
+										"{{BASE_URL}}"
+									],
+									"path": [
+										"api",
+										"v1",
+										"query-events",
+										""
+									],
+									"query": [
+										{
+											"key": "start",
+											"value": "2021-10-22T18:39:15Z"
+										},
+										{
+											"key": "category",
+											"value": "page interaction",
+											"disabled": true
+										},
+										{
+											"key": "end",
+											"value": "2021-10-23T18:39:15Z"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 24 Oct 2021 18:43:39 GMT"
+								},
+								{
+									"key": "Server",
+									"value": "WSGIServer/0.2 CPython/3.9.0"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Vary",
+									"value": "Accept, Origin"
+								},
+								{
+									"key": "Allow",
+									"value": "GET, HEAD, OPTIONS"
+								},
+								{
+									"key": "X-Frame-Options",
+									"value": "DENY"
+								},
+								{
+									"key": "Content-Length",
+									"value": "982"
+								},
+								{
+									"key": "X-Content-Type-Options",
+									"value": "nosniff"
+								},
+								{
+									"key": "Referrer-Policy",
+									"value": "same-origin"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"count\": 3,\n    \"next\": null,\n    \"previous\": null,\n    \"results\": [\n        {\n            \"id\": \"49380a93-567b-47dd-a499-44d0147c48ad\",\n            \"application\": \"ad2a4a44-6376-4ada-a3d9-621992c80f9b\",\n            \"session_id\": \"91e0ca17-07ba-408a-a760-380e43934709\",\n            \"category\": \"page interaction\",\n            \"name\": \"pageview\",\n            \"data\": {\n                \"host\": \"www.consumeraffairs.com\",\n                \"path\": \"/\"\n            },\n            \"timestamp\": \"2021-10-23T15:48:57Z\"\n        },\n        {\n            \"id\": \"402fde22-821c-45db-aaaa-8ca1e87265ec\",\n            \"application\": \"ad2a4a44-6376-4ada-a3d9-621992c80f9b\",\n            \"session_id\": \"91e0ca17-07ba-408a-a760-380e43934709\",\n            \"category\": \"form interaction\",\n            \"name\": \"submit\",\n            \"data\": {\n                \"form\": {\n                    \"last_name\": \"Doe\",\n                    \"first_name\": \"John\"\n                },\n                \"host\": \"www.consumeraffairs.com\",\n                \"path\": \"/\"\n            },\n            \"timestamp\": \"2021-10-23T15:50:53Z\"\n        },\n        {\n            \"id\": \"73d68658-bea1-4277-b53c-9c40cc7d3c32\",\n            \"application\": \"ad2a4a44-6376-4ada-a3d9-621992c80f9b\",\n            \"session_id\": \"91e0ca17-07ba-408a-a760-380e43934709\",\n            \"category\": \"page interaction\",\n            \"name\": \"cta click\",\n            \"data\": {\n                \"host\": \"www.consumeraffairs.com\",\n                \"path\": \"/\",\n                \"element\": \"chat bubble\"\n            },\n            \"timestamp\": \"2021-10-23T15:51:18Z\"\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
 		}
 	]
 }
